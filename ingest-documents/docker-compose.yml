@@ -114,7 +114,6 @@ services:
       - ./common/kibana/config/kibana.yml:/usr/share/kibana/config/kibana.yml:ro
     depends_on:
       - elasticsearch-1
-  kibana:
     ports:
       - "5601:5601"
 
