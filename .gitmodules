@@ -1,4 +1,0 @@
-[submodule "annotate/nlp-services/annotate/nlp-services/applications/bio-yodie/gate"]
-	path = annotate/nlp-services/annotate/nlp-services/applications/bio-yodie/gate
-	url = https://github.com/GateNLP/Bio-YODIE
-	ignore = untracked
