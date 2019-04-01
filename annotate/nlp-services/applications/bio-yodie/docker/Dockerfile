@@ -10,7 +10,7 @@ RUN apt-get update && \
 	apt-get autoremove -y && \
 	rm -rf /var/lib/apt/lists/*
 
-
+# clone the bio-yodie repo
 WORKDIR /build/
 RUN git clone https://github.com/GateNLP/Bio-YODIE.git
 
@@ -18,6 +18,7 @@ WORKDIR /build/Bio-YODIE
 RUN git pull --recurse-submodules=on-demand && \
 	git submodule update --init --recursive
 
+# build plugins
 WORKDIR /build/Bio-YODIE/plugins
 RUN bash compilePlugins.sh
 
