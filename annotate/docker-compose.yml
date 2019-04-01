@@ -16,7 +16,10 @@ services:
     volumes:
       - ./pipelines/py-ingester/config/config.yml:/app/config.yml:ro
     command: "python main.py --config config.yml"
-    network_mode: "host"
+    #network_mode: "host"
+    networks:
+      - nlpnet
+      - ingest-documents_esnet
 
 #---------------------------------------------------------------------------#
 # NLP services                                                              #
@@ -33,6 +36,8 @@ services:
     ports:
       - "8095:8095"
     command: "bash /app/nlp-service/run.sh"
+    networks:
+      - nlpnet
 
 
   gate-nlp-bioyodie:
@@ -49,3 +54,15 @@ services:
     ports:
       - "8096:8095"
     command: "bash /app/nlp-service/run.sh"
+    networks:
+      - nlpnet
+
+
+#---------------------------------------------------------------------------#
+# Docker networks                                                           #
+#---------------------------------------------------------------------------#
+networks:
+  nlpnet:
+    driver: bridge
+  ingest-documents_esnet:
+    external: true
