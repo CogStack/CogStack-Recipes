@@ -26,11 +26,10 @@ services:
       context: ../../../github/nlp-rest-service
       target: service-runner-gate
     volumes:
-      # configuration files
-      - ./nlp-services/config/example-drug:/app/nlp-service/config:ro
-      - ./nlp-services/run.sh:/app/nlp-service/run.sh:ro
+      # configuration file
+      - ./nlp-services/applications/drug-app/config:/app/nlp-service/config:ro
       # GATE app resources
-      - ./resources/gate/drug-app:/gate/app/drug-app:ro
+      - ./nlp-services/applications/drug-app/gate:/gate/app/drug-app:ro
     ports:
       - "8095:8095"
     command: "bash /app/nlp-service/run.sh"
