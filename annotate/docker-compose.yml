@@ -11,8 +11,9 @@ services:
 # Ingestion                                                                 #
 #---------------------------------------------------------------------------#
   py-ingester:
-    build:
-      context: ../../../github/annotations-ingester
+    #build:
+    #  context: ../../../github/annotations-ingester
+    image: lrog/annotations-ingester:latest
     environment:
       - SERVICES_USED=elasticsearch-1:9200,elasticsearch-2:9200,elasticsearch-3:9200,gate-nlp-drug:8095
     volumes:
@@ -27,9 +28,10 @@ services:
 # NLP services                                                              #
 #---------------------------------------------------------------------------#
   gate-nlp-drug:
-    build:
-      context: ../../../github/nlp-rest-service
-      target: service-runner-gate
+    #build:
+    #  context: ../../../github/nlp-rest-service
+    #  target: service-runner-gate
+    image: lrog/nlp-rest-service-gate:latest
     volumes:
       # configuration file
       - ./nlp-services/applications/drug-app/config:/app/nlp-service/config:ro
@@ -41,11 +43,11 @@ services:
     networks:
       - nlpnet
 
-
   gate-nlp-bioyodie:
-    build:
-      context: ../../../github/nlp-rest-service
-      target: service-runner-gate
+    #build:
+    #  context: ../../../github/nlp-rest-service
+    #  target: service-runner-gate
+    image: lrog/nlp-rest-service-gate:latest
     volumes:
       # configuration files
       - ./nlp-services/applications/bio-yodie/config:/app/nlp-service/config:ro
