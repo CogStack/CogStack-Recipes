@@ -1,0 +1,33 @@
+source:
+  es:
+#    hosts: ["http://localhost:9200", "http://localhost:9201", "http://localhost:9202"]
+    hosts: ["elasticsearch-1:9200", "elasticsearch-2:9200", "elasticsearch-3:9200"]
+    index-name: 'sample_observations_view'
+
+sink:
+  es:
+#    hosts: ["http://localhost:9200", "http://localhost:9201", "http://localhost:9202"]
+    hosts: ["elasticsearch-1:9200", "elasticsearch-2:9200", "elasticsearch-3:9200"]
+    index-name: 'new_atomic_annotations'
+
+nlp-service:
+  #endpoint-url: 'http://localhost:8096/api/process'
+  endpoint-url: 'http://gate-nlp-drug:8095/api/process'
+
+mapping:
+  source:
+    text-field: 'document_content'
+    docid-field: 'document_id'
+    persist-fields:
+      - 'encounter_id'
+      - 'patient_id'
+      - 'observation_id'
+      - 'encounter_start'
+      - 'encounter_end'
+    batch:
+      date-field: 'encounter_start'
+      date-format: 'yyyy-MM-dd'
+      date-start: '2010-01-01'
+      date-end: '2018-06-01'
+  sink:
+    split-index-by-field: 'type'
