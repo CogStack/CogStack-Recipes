@@ -27,7 +27,7 @@ services:
 #---------------------------------------------------------------------------#
 # NLP services                                                              #
 #---------------------------------------------------------------------------#
-  gate-nlp-drug:
+  nlp-gate-drug:
     #build:
     #  context: ../../../github/nlp-rest-service
     #  target: service-runner-gate
@@ -43,7 +43,7 @@ services:
     networks:
       - nlpnet
 
-  gate-nlp-bioyodie:
+  nlp-gate-bioyodie:
     #build:
     #  context: ../../../github/nlp-rest-service
     #  target: service-runner-gate

@@ -12,7 +12,7 @@ sink:
 
 nlp-service:
   #endpoint-url: 'http://localhost:8096/api/process'
-  endpoint-url: 'http://gate-nlp-drug:8095/api/process'
+  endpoint-url: 'http://nlp-gate-drug:8095/api/process'
 
 mapping:
   source:
