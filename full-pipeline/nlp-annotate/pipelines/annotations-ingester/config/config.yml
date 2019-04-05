@@ -1,17 +1,14 @@
 source:
   es:
-#    hosts: ["http://localhost:9200", "http://localhost:9201", "http://localhost:9202"]
     hosts: ["elasticsearch-1:9200", "elasticsearch-2:9200", "elasticsearch-3:9200"]
     index-name: 'sample_observations_view'
 
 sink:
   es:
-#    hosts: ["http://localhost:9200", "http://localhost:9201", "http://localhost:9202"]
     hosts: ["elasticsearch-1:9200", "elasticsearch-2:9200", "elasticsearch-3:9200"]
     index-name: 'new_atomic_annotations'
 
 nlp-service:
-  #endpoint-url: 'http://localhost:8096/api/process'
   endpoint-url: 'http://nlp-gate-drug:8095/api/process'
 
 mapping:

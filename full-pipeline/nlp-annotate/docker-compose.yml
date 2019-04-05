@@ -1,5 +1,4 @@
-version: '3.4'
-# version 3.4. introduces 'target' keyword used in Docker multi-stage builds
+version: '3.5'
 
 #---------------------------------------------------------------------------#
 # Used services                                                             #
@@ -11,15 +10,12 @@ services:
 # Ingestion                                                                 #
 #---------------------------------------------------------------------------#
   annotations-ingester:
-    #build:
-    #  context: ../../../github/annotations-ingester
     image: cogstacksystems/annotations-ingester:latest
     environment:
       - SERVICES_USED=elasticsearch-1:9200,elasticsearch-2:9200,elasticsearch-3:9200,gate-nlp-drug:8095
     volumes:
       - ./pipelines/annotations-ingester/config/config.yml:/app/config/config.yml:ro
     command: "bash run.sh"
-    #network_mode: "host"
     networks:
       - nlpnet
       - esnet-ext
@@ -28,9 +24,6 @@ services:
 # NLP services                                                              #
 #---------------------------------------------------------------------------#
   nlp-gate-drug:
-    #build:
-    #  context: ../../../github/nlp-rest-service
-    #  target: service-runner-gate
     image: cogstacksystems/nlp-rest-service-gate:latest
     volumes:
       # configuration file
@@ -44,9 +37,6 @@ services:
       - nlpnet
 
   nlp-gate-bioyodie:
-    #build:
-    #  context: ../../../github/nlp-rest-service
-    #  target: service-runner-gate
     image: cogstacksystems/nlp-rest-service-gate:latest
     volumes:
       # configuration files
@@ -67,6 +57,5 @@ services:
 networks:
   nlpnet:
     driver: bridge
-  #ingest-documents_esnet:
   esnet-ext:
     external: true

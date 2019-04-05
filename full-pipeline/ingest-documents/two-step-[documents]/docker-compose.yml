@@ -49,9 +49,6 @@ services:
     volumes:
       - ./common/pgjobrepo/create_repo.sh:/docker-entrypoint-initdb.d/create_repo.sh:ro
       - cogstack-job-vol:/var/lib/postgresql/data
-# TODO: fix POSTGRES password management
-#    environment:
-#      - "POSTGRES_PASSWORD=postgresadminpass"
     ports:
       - 5432
     networks:
@@ -130,7 +127,6 @@ services:
       - ./common/kibana/config/kibana.yml:/usr/share/kibana/config/kibana.yml:ro
     depends_on:
       - elasticsearch-1
-# kibana will be usually available at this port
     ports:
       - "5601:5601"
     networks:
