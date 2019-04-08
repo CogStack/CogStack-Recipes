@@ -93,7 +93,7 @@ services:
         soft: -1
         hard: -1
     ports:
-      - "9201:9200"
+      - 9200
     networks:
       - esnet
 
@@ -112,7 +112,7 @@ services:
         soft: -1
         hard: -1
     ports:
-      - "9202:9200"
+      - 9200
     networks:
       - esnet
 
