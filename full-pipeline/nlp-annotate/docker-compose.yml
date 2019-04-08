@@ -12,10 +12,12 @@ services:
   annotations-ingester:
     image: cogstacksystems/annotations-ingester:latest
     environment:
-      - SERVICES_USED=elasticsearch-1:9200,elasticsearch-2:9200,elasticsearch-3:9200,gate-nlp-drug:8095
+      - SERVICES_USED=elasticsearch-1:9200,elasticsearch-2:9200,elasticsearch-3:9200,nlp-gate-drug:8095
     volumes:
       - ./pipelines/annotations-ingester/config/config.yml:/app/config/config.yml:ro
     command: "bash run.sh"
+    depends_on:
+      - nlp-gate-drug
     networks:
       - nlpnet
       - esnet-ext
