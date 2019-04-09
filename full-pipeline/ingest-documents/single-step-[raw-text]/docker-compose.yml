@@ -25,7 +25,7 @@ services:
 # CogStack-Pipeline related containers                                      #
 #---------------------------------------------------------------------------#
   cogstack-pipeline:
-    image: cogstacksystems/cogstack-pipeline:latest
+    image: cogstacksystems/cogstack-pipeline:dev-latest
     environment:
       - SERVICES_USED=cogstack-job-repo:5432,samples-db:5432,elasticsearch-1:9200
       - LOG_LEVEL=info
