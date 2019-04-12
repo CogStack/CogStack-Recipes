@@ -10,7 +10,7 @@ services:
 # Ingestion                                                                 #
 #---------------------------------------------------------------------------#
   annotations-ingester:
-    image: cogstacksystems/annotations-ingester:latest
+    image: cogstacksystems/annotations-ingester:0.1.0
     environment:
       - SERVICES_USED=elasticsearch-1:9200,elasticsearch-2:9200,elasticsearch-3:9200,nlp-gate-drug:8095
     volumes:
@@ -26,7 +26,7 @@ services:
 # NLP services                                                              #
 #---------------------------------------------------------------------------#
   nlp-gate-drug:
-    image: cogstacksystems/nlp-rest-service-gate:latest
+    image: cogstacksystems/nlp-rest-service-gate:0.1.0
     volumes:
       # configuration file
       - ./nlp-services/applications/drug-app/config:/app/nlp-service/config:ro

@@ -24,7 +24,8 @@ mapping:
     batch:
       date-field: 'encounter_start'
       date-format: 'yyyy-MM-dd'
-      date-start: '2010-01-01'
-      date-end: '2018-06-01'
+      date-start: '1900-01-01'
+      date-end: '2050-01-01'
   sink:
     split-index-by-field: 'type'
+
