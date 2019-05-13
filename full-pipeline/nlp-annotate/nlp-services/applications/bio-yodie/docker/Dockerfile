@@ -2,7 +2,7 @@
 #
 # Bio-Yodie builder
 #
-FROM gate-nlp-service:latest AS bioyodie-builder
+FROM cogstacksystems/nlp-rest-service-gate:dev-latest AS bioyodie-builder
 
 RUN apt-get update && \
 	apt-get install -y git ant && \
@@ -28,7 +28,7 @@ RUN bash compilePlugins.sh
 #
 # GATE Service Runner with ANNIE plugins and Bio-YODIE initializer
 #
-FROM gate-nlp-service:latest AS bioyodie-initializer
+FROM cogstacksystems/nlp-rest-service-gate:dev-latest AS bioyodie-initializer
 
 # copy the GATE Bio-Yodie application
 WORKDIR /gate/app/bioyodie
@@ -63,7 +63,7 @@ RUN ["bash", "init_gate.sh"]
 #
 # GATE Service Runner with ANNIE plugins
 #
-FROM gate-nlp-service:latest
+FROM cogstacksystems/nlp-rest-service-gate:dev-latest
 
 # copy the GATE Bio-Yodie application
 WORKDIR /gate/app/bioyodie
