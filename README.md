@@ -1,3 +1,7 @@
+# Archived
+
+This repo is no longer maintained. [CogStack-Nifi](https://github.com/CogStack/CogStack-NiFi) recipes are available [here](https://github.com/CogStack/CogStack-NiFi/tree/master/scripts). 
+
 # Introduction
 
 This repository contains recipes for example end-to-end deployments using CogStack.
